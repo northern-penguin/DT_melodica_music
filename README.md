@@ -1,8 +1,10 @@
 # DTmusic 三角洲口琴曲谱导入与演奏
 
-## 当前本地源码版本
+## Windows 程序包
 
-本次曲库、歌单和循环功能已写入本地源码，**尚未重新打包**；`dist/DTmusic-Windows.zip` 仍是旧版。请在项目目录运行 `运行DTmusic.bat`，或执行：
+下载 Release 附件 `DTmusic-Windows.zip`，解压后运行 `DTmusic/DTmusic.exe`。程序包自带 Python 运行时、Tesseract、PDF 读取组件，以及带 Java 运行时的 [Audiveris 5.11.0](https://github.com/Audiveris/audiveris/releases/tag/5.11.0)，无需另装 Conda、Python 或 Java。
+
+如果要从源码运行，请在项目目录运行 `运行DTmusic.bat`，或执行：
 
 ```powershell
 conda run -n DTmusic python dtmusic_gui.py
@@ -12,17 +14,15 @@ conda run -n DTmusic python dtmusic_gui.py
 
 右键曲名可以删除、修改、打开演奏 JSON 或加入歌单。修改窗口提供逐音表格和曲名、BPM、拍号、调号字段。导入曲目删除后进入 `data/trash`；内置曲目删除后只从当前曲库隐藏。用户曲谱、设置、歌单和日志保存在程序所在目录的 `data/` 下。首次运行会校验并迁移旧 `%LOCALAPPDATA%\DTmusic` 中的已知文件，复制确认后清理原件；被占用的文件留在原处并显示失败原因。
 
-## 旧版 Windows 程序包
+## 导入曲谱
 
-解压 `DTmusic-Windows.zip`，运行 `DTmusic/DTmusic.exe`。窗口中选择清晰印刷体 PNG/JPG/PDF 简谱、TXT 简谱，或 MusicXML/XML/MXL，填写曲名、拍号、BPM 与调号，点“识别并加入曲库”。有多条五线谱声部时，选择要演奏的旋律。导入结果及识别疑点会显示在窗口底部；请先核对结果，再选曲并点“准备演奏”。切换到游戏窗口后按 **F6** 开始，按 **F8** 停止。窗口中的“停止”也可终止演奏。
-
-旧版 Windows 程序包自带 Python 运行时、Tesseract、PDF 读取组件，以及带 Java 运行时的 [Audiveris 5.11.0](https://github.com/Audiveris/audiveris/releases/tag/5.11.0)，不要求另装 Conda、Python 或 Java。旧包仍把 JSON 和日志写入 `%LOCALAPPDATA%\DTmusic`。五线谱图片由 Audiveris 离线转换为 MusicXML；图片分辨率过低或符号复杂时可能识别失败。若要使用自己安装的版本，可用 `DTMUSIC_AUDIVERIS` 指定其 `Audiveris.exe` 完整路径。
+窗口中选择清晰印刷体 PNG/JPG/PDF 简谱、TXT 简谱，或 MusicXML/XML/MXL，填写曲名、拍号、BPM 与调号，点“识别并加入曲库”。有多条五线谱声部时，选择要演奏的旋律。导入结果及识别疑点会显示在窗口底部；请先核对结果，再选曲并点“准备演奏”。五线谱图片由 Audiveris 离线转换为 MusicXML；若要使用自己安装的版本，可用 `DTMUSIC_AUDIVERIS` 指定其 `Audiveris.exe` 完整路径。
 
 Audiveris 以独立进程运行，原版程序文件位于包内 `_internal/tools/audiveris`。其 AGPLv3 许可、同版本源码包及来源说明位于 `licenses`，Java 运行时的许可文本保留在 Audiveris 的 `runtime/legal` 目录。重新分发时请连同这些材料一起提供。
 
-若要核对解压后的独立包，可在 PowerShell 中运行 `DTmusic/DTmusic.exe --self-test`，再查看 `%LOCALAPPDATA%\DTmusic\selftest.json`。其中 `builtin_songs`、`tesseract`、`pdf`、`tk`、`audiveris` 应为 `true`。
+若要核对解压后的独立包，可在 PowerShell 中运行 `DTmusic/DTmusic.exe --self-test`，再查看 `DTmusic/data/selftest.json`。其中 `builtin_songs`、`tesseract`、`pdf`、`tk`、`audiveris` 应为 `true`。请将程序解压到可写目录，以便保存曲谱和设置。
 
-图片识谱只针对清晰印刷体。简谱图片的数字、音区点、时值横线可能识错，程序会显示核对提示；遇到无法辨认的时值暂按一拍。确认无可用旋律或旋律超出口琴音域时不会生成 JSON。当前源码版生成的文件位于 `data/library`。
+图片识谱只针对清晰印刷体。简谱图片的数字、音区点、时值横线可能识错，程序会显示核对提示；遇到无法辨认的时值暂按一拍。确认无可用旋律或旋律超出口琴音域时不会生成 JSON。导入文件位于程序旁的 `data/library`。
 
 ## 开发与构建
 
@@ -32,9 +32,10 @@ Audiveris 以独立进程运行，原版程序文件位于包内 `_internal/tool
 conda env create -f environment.yml
 conda run -n DTmusic python -m unittest discover -s tests -v
 conda run -n DTmusic python dtmusic_gui.py
+./build.ps1
 ```
 
-本轮仅测试源码，暂不运行 `build.ps1`。源码命令行用法见下文。
+`build.ps1` 默认查找 `D:\ProgramData\anaconda3\Scripts\conda.exe`；其他位置可通过 `-Conda` 指定。构建产物位于 `dist/DTmusic-Windows.zip`。源码命令行用法见下文。
 
 TXT 简谱以空格分隔音符，`|` 分小节。`1=C` 指定调号；`1` 是一拍、`1_` 是半拍、`1__` 是四分之一拍、`1.` 是附点一拍、`1/2` 是两拍、`0` 是休止、`#4` 升半音、`5+`/`5-` 是高/低八度。示例：
 

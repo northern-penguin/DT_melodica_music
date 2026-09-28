@@ -1,4 +1,4 @@
-param([string]$Conda = "D:\ProgramData\anaconda3\Scripts\conda.exe")
+﻿param([string]$Conda = "D:\ProgramData\anaconda3\Scripts\conda.exe")
 
 $ErrorActionPreference = "Stop"
 $project = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -73,7 +73,13 @@ $pdfLicenses = Get-ChildItem -LiteralPath (Join-Path $prefix "Lib\site-packages"
 if ($pdfLicenses) {
     Copy-Item -LiteralPath (Join-Path $pdfLicenses.FullName "licenses") -Destination (Join-Path $licenseDir "pypdfium2-pdfium") -Recurse -Force
 }
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/LICENSE" -OutFile (Join-Path $licenseDir "tessdata_fast-LICENSE.txt")
+$modelLicense = Join-Path $vendorDir "tessdata_fast-LICENSE.txt"
+if (Test-Path -LiteralPath $modelLicense) {
+    # 本地缓存授权文本，离线重建时也能保留模型的许可文件。
+    Copy-Item -LiteralPath $modelLicense -Destination (Join-Path $licenseDir "tessdata_fast-LICENSE.txt") -Force
+} else {
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/LICENSE" -OutFile (Join-Path $licenseDir "tessdata_fast-LICENSE.txt")
+}
 Copy-Item -LiteralPath $audSource -Destination (Join-Path $licenseDir "Audiveris-$audVersion-source.zip") -Force
 @"
 Audiveris $audVersion is bundled as an unmodified, separately launched program.
