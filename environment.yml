@@ -1,0 +1,13 @@
+name: DTmusic
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - tk
+  - pillow
+  - tesseract
+  - pyinstaller
+  - pip
+  - pip:
+      - pypdfium2

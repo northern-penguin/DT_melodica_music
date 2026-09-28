@@ -1,0 +1,22 @@
+# 本地曲库、设置、日志与识谱临时文件；其中可能包含用户自己的曲谱。
+/data/
+
+# PyInstaller 构建目录与可分发程序包。
+/build/
+/dist/
+*.exe
+*.msi
+*.zip
+*.spec
+
+# 下载的 Audiveris 安装包、运行时及本地识谱样本。
+/vendor/
+
+# Python 缓存与本地开发环境。
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.venv/
+.conda/
+*.log
