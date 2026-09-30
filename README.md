@@ -72,6 +72,8 @@ python harmonica.py --playlist 练习 --loop-mode random
 
 内置第 4 首是根据你提供的五线谱截图修正的加木《两难》副歌首遍，可用 `python harmonica.py --song 4` 选中。采用谱面标出的 C 调、4/4、96 BPM；连音合并为一个持续音。截图在第二遍副歌结束前被截断，因此这里只录入可完整核对的第一遍。谱中最低音低于游戏口琴音域，整段旋律统一升高一个八度，保留相对音程。
 
+曲库第 5–7 首是古典乐主题片段，分别为贝多芬《致爱丽丝》、莫扎特《小夜曲》第一乐章及巴赫《平均律》第一卷第一首前奏曲。曲谱参照 [Mutopia 的《致爱丽丝》](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931)、[《小夜曲》](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2230)、[《前奏曲》](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=5) 公有领域谱面录入；只收录开头，并按单旋律口琴的音域或发声方式作了调整。JSON 中保留拍号、谱面来源和具体改动说明。
+
 **注意：**开始或循环热键作用于按下时的前台窗口。请确认已进入口琴演奏界面。若游戏未响应模拟输入，脚本无法保证兼容，也不提供绕过反作弊的方法。
 
 ## 自定义曲谱
