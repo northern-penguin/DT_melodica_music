@@ -74,6 +74,24 @@ python harmonica.py --playlist 练习 --loop-mode random
 
 曲库第 5–7 首是古典乐主题片段，分别为贝多芬《致爱丽丝》、莫扎特《小夜曲》第一乐章及巴赫《平均律》第一卷第一首前奏曲。曲谱参照 [Mutopia 的《致爱丽丝》](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931)、[《小夜曲》](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2230)、[《前奏曲》](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=5) 公有领域谱面录入；只收录开头，并按单旋律口琴的音域或发声方式作了调整。JSON 中保留拍号、谱面来源和具体改动说明。
 
+曲库第 8–18 首继续提供以下古典乐片段。每首 JSON 都记录谱面链接、拍号及改编提示；这里只收录短片段，和弦取最高音，必要时整体移动八度以适配单旋律口琴。播放 BPM 是口琴练习速度，可能与原曲速度不同。
+
+| 曲目 | 谱面来源 |
+| --- | --- |
+| 柴可夫斯基《四小天鹅舞曲》 | [IMSLP：《天鹅湖》，E. Langer 约 1900 年钢琴缩谱](https://imslp.org/wiki/Swan_Lake_(ballet),_Op.20_(Tchaikovsky,_Pyotr)) |
+| 佩措尔德《G 大调小步舞曲》BWV Anh. 114 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=75) |
+| 莫扎特《土耳其进行曲》K. 331 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=108) |
+| 萨蒂《第一号裸体歌舞曲》 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=37) |
+| 肖邦《小狗圆舞曲》Op. 64 No. 1 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=483) |
+| 勃拉姆斯《圆舞曲》Op. 39 No. 10 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2164) |
+| 舒曼《梦幻曲》Op. 15 No. 7 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=504) |
+| 德彪西《月光》 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1778) |
+| 柴可夫斯基《天鹅湖·那不勒斯舞曲》 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=896) |
+| 舒伯特《圣母颂》D. 839 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1054) |
+| 巴赫《G 弦上的咏叹调》BWV 1068 | [Mutopia](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1534) |
+
+《四小天鹅舞曲》采用《天鹅湖》的四小天鹅舞段，并非《天鹅湖圆舞曲》。BWV Anh. 114 在旧谱中常误署巴赫，现通常归于佩措尔德；可参见 [荷兰巴赫协会的作品说明](https://www.bachvereniging.nl/en/bwv/bwv-114-115-anhang)。
+
 **注意：**开始或循环热键作用于按下时的前台窗口。请确认已进入口琴演奏界面。若游戏未响应模拟输入，脚本无法保证兼容，也不提供绕过反作弊的方法。
 
 ## 自定义曲谱
